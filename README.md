@@ -33,10 +33,10 @@ NanasCMS is a lightweight, self-hosted Content Management System built with mode
     ```
 
 2.  **Install Dependencies:**
-    Ensure you have Composer installed. Run:
+    Ensure you have NPM installed. Run:
 
     ```bash
-    composer install
+    npm install
     ```
 
 3.  **Configure the Database:**
