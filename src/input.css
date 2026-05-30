@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors matching Nanas Home Studio - Tropical luxury with Gold Amber and Deep Emerald */
+  --color-brand-primary: #fbbf24; /* Amber 400 */
+  --color-brand-secondary: #f59e0b; /* Amber 500 */
+  --color-brand-emerald: #10b981; /* Emerald 500 */
+  --color-dark-bg: #05070c; /* Ultra dark void bg */
+  --color-dark-surface: #0e111a; /* High contrast slate surface */
+  --color-dark-border: rgba(255, 255, 255, 0.06);
+
+  --font-display: "Plus Jakarta Sans", "Plus Jakarta Display", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", system-ui, monospace;
+
+  /* Custom spacing */
+  --spacing-128: 32rem;
+  --spacing-hero: 48rem;
+
+  /* Custom animations */
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+  --animate-float-mid: float-mid 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 12s ease-in-out infinite;
+  --animate-scroll-marquee: scroll-marquee 25s linear infinite;
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.03);
+    }
+  }
+  @keyframes float-mid {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1.05);
+    }
+    50% {
+      transform: translateY(15px) scale(0.98);
+    }
+  }
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(1.15);
+    }
+  }
+  @keyframes scroll-marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Custom Base Configuration */
+@layer base {
+  body {
+    background-color: var(--color-dark-bg);
+    color: #f8fafc;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom Scrollbar design */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #05070c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-primary);
+  }
+
+  /* Selection Style */
+  ::selection {
+    background: var(--color-brand-primary);
+    color: #05070c;
+  }
+}
+
+/* Custom Premium Utilities */
+@layer utilities {
+  /* Text and background glow highlights */
+  .glow-amber {
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.35));
+  }
+  .glow-emerald {
+    filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.25));
+  }
+
+  /* High quality glassmorphism panels */
+  .glass-card {
+    background: rgba(14, 17, 26, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card-hover {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    background: rgba(14, 17, 26, 0.7);
+    border-color: rgba(251, 191, 36, 0.2);
+    box-shadow:
+      0 20px 40px -15px rgba(0, 0, 0, 0.7),
+      0 0 25px rgba(251, 191, 36, 0.04);
+    transform: translateY(-6px);
+  }
+
+  /* Sleek modern gradient typography */
+  .text-gradient-white {
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-nanas {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 60%, #10b981 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Custom layout textures */
+  .grid-bg {
+    background-size: 50px 50px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+
+  .dot-bg {
+    background-size: 24px 24px;
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px
+    );
+  }
+
+  /* Gradient Blur background blobs */
+  .blur-blob {
+    position: absolute;
+    filter: blur(100px);
+    opacity: 0.35;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* ==========================================================================
+   Light Theme System & Color Inversion
+   ========================================================================== */
+.light-theme {
+  /* Theme colors overrides (mapped to light values) */
+  --color-dark-bg: #f8fafc; /* Slate 50 */
+  --color-dark-surface: #ffffff; /* Pure White */
+  --color-dark-border: rgba(15, 23, 42, 0.08);
+  --color-white: #0f172a; /* Slate 900 (flips text-white to readable dark) */
+
+  /* Inverted slate colors for text and sub-elements */
+  --color-slate-100: #0f172a; /* Slate 900 */
+  --color-slate-200: #1e293b; /* Slate 800 */
+  --color-slate-300: #334155; /* Slate 700 */
+  --color-slate-400: #475569; /* Slate 600 */
+  --color-slate-500: #64748b; /* Slate 500 */
+  --color-slate-600: #94a3b8; /* Slate 400 */
+  --color-slate-700: #cbd5e1; /* Slate 300 */
+  --color-slate-800: #e2e8f0; /* Slate 200 */
+  --color-slate-900: #f1f5f9; /* Slate 100 */
+
+  /* Override hardcoded body background and text colors */
+  body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-slate-100) !important;
+  }
+
+  /* Specific overrides to keep text dark on primary yellow/brand buttons */
+  .text-dark-bg {
+    color: #05070c !important;
+  }
+
+  /* Specific overrides to keep logo SVG dark or styled properly */
+  a .text-white {
+    color: #0f172a !important;
+  }
+
+  /* Handle text selection */
+  ::selection {
+    background: var(--color-brand-primary);
+    color: #05070c !important;
+  }
+
+  /* Scrollbar styling in light mode */
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+  }
+
+  /* Sun/Moon icon visibility toggles */
+  .theme-toggle-btn .icon-sun {
+    display: none !important;
+  }
+  .theme-toggle-btn .icon-moon {
+    display: inline-block !important;
+  }
+
+  /* Premium light glassmorphic card styling */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 
+      0 10px 30px -10px rgba(15, 23, 42, 0.05),
+      0 1px 3px rgba(15, 23, 42, 0.02) !important;
+  }
+
+  .glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(251, 191, 36, 0.4) !important;
+    box-shadow:
+      0 20px 40px -15px rgba(15, 23, 42, 0.1),
+      0 0 25px rgba(251, 191, 36, 0.06) !important;
+  }
+
+  /* Sticky Header background-color blur override */
+  header.py-2.bg-dark-bg\/85 {
+    background-color: rgba(248, 250, 252, 0.85) !important;
+  }
+
+  /* Heading typography gradient */
+  .text-gradient-white {
+    background: linear-gradient(135deg, #0f172a 0%, #334155 60%, #475569 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  /* Textures and grid lines */
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
+  }
+
+  .dot-bg {
+    background-image: radial-gradient(
+      rgba(15, 23, 42, 0.05) 1px,
+      transparent 1px
+    ) !important;
+  }
+
+  /* Soften blur blobs in light mode */
+  .blur-blob {
+    opacity: 0.15 !important;
+  }
+
+  /* Form controls placeholders */
+  input::placeholder, 
+  textarea::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  /* Force select inputs dropdown options background to look clean */
+  select option {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  /* Footer coloring */
+  footer {
+    background-color: #f1f5f9 !important;
+    border-color: rgba(15, 23, 42, 0.06) !important;
+  }
+}
+
+/* ==========================================================================
+   Dark Theme System Icon Toggles (Default)
+   ========================================================================== */
+html:not(.light-theme) .theme-toggle-btn .icon-sun {
+  display: inline-block !important;
+}
+html:not(.light-theme) .theme-toggle-btn .icon-moon {
+  display: none !important;
+}
+

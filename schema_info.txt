@@ -1,0 +1,7 @@
+UNCAUGHT EXCEPTION: SQLSTATE[HY093]: Invalid parameter number
+Stack trace:
+#0 /var/www/html/nanascms/core/Database.php(61): PDOStatement->execute()
+#1 /var/www/html/nanascms/app/Controllers/AuthController.php(37): Core\Database::query()
+#2 /var/www/html/nanascms/core/Router.php(57): App\Controllers\AuthController->login()
+#3 /var/www/html/nanascms/public/index.php(77): Core\Router->resolve()
+#4 {main}

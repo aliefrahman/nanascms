@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Light Theme System & Color Inversion
+   ========================================================================== */
+.light-theme {
+  /* Theme colors overrides (mapped to light values) */
+  --color-dark-bg: #f8fafc; /* Slate 50 */
+  --color-dark-surface: #ffffff; /* Pure White */
+  --color-dark-border: rgba(15, 23, 42, 0.08);
+  --color-white: #0f172a; /* Slate 900 (flips text-white to readable dark) */
+
+  /* Inverted slate colors for text and sub-elements */
+  --color-slate-100: #0f172a; /* Slate 900 */
+  --color-slate-200: #1e293b; /* Slate 800 */
+  --color-slate-300: #334155; /* Slate 700 */
+  --color-slate-400: #475569; /* Slate 600 */
+  --color-slate-500: #64748b; /* Slate 500 */
+  --color-slate-600: #94a3b8; /* Slate 400 */
+  --color-slate-700: #cbd5e1; /* Slate 300 */
+  --color-slate-800: #e2e8f0; /* Slate 200 */
+  --color-slate-900: #f1f5f9; /* Slate 100 */
+}
+
+/* Override hardcoded body background and text colors */
+.light-theme body {
+  background-color: var(--color-dark-bg) !important;
+  color: var(--color-slate-100) !important;
+}
+
+/* Specific overrides to keep text dark on primary yellow/brand buttons */
+.light-theme .text-dark-bg {
+  color: #05070c !important;
+}
+
+/* Specific overrides to keep logo SVG dark or styled properly */
+.light-theme a .text-white {
+  color: #0f172a !important;
+}
+
+/* Handle text selection */
+.light-theme ::selection {
+  background: var(--color-brand-primary) !important;
+  color: #05070c !important;
+}
+
+/* Scrollbar styling in light mode */
+.light-theme ::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+}
+.light-theme ::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+}
+
+/* Sun/Moon icon visibility toggles */
+.light-theme .theme-toggle-btn .icon-sun {
+  display: none !important;
+}
+.light-theme .theme-toggle-btn .icon-moon {
+  display: inline-block !important;
+}
+
+/* Premium light glassmorphic card styling */
+.light-theme .glass-card {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 
+    0 10px 30px -10px rgba(15, 23, 42, 0.05),
+    0 1px 3px rgba(15, 23, 42, 0.02) !important;
+}
+
+.light-theme .glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(251, 191, 36, 0.4) !important;
+  box-shadow:
+    0 20px 40px -15px rgba(15, 23, 42, 0.1),
+    0 0 25px rgba(251, 191, 36, 0.06) !important;
+}
+
+/* Sticky Header background-color blur override */
+.light-theme header.py-2.bg-dark-bg\/85 {
+  background-color: rgba(248, 250, 252, 0.85) !important;
+}
+
+/* Heading typography gradient */
+.light-theme .text-gradient-white {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 60%, #475569 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Textures and grid lines */
+.light-theme .grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
+}
+
+.light-theme .dot-bg {
+  background-image: radial-gradient(
+    rgba(15, 23, 42, 0.05) 1px,
+    transparent 1px
+  ) !important;
+}
+
+/* Soften blur blobs in light mode */
+.light-theme .blur-blob {
+  opacity: 0.15 !important;
+}
+
+/* Form controls placeholders */
+.light-theme input::placeholder, 
+.light-theme textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Force select inputs dropdown options background to look clean */
+.light-theme select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Footer coloring */
+.light-theme footer {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+/* ==========================================================================
+   Dark Theme System Icon Toggles (Default)
+   ========================================================================== */
+html:not(.light-theme) .theme-toggle-btn .icon-sun {
+  display: inline-block !important;
+}
+html:not(.light-theme) .theme-toggle-btn .icon-moon {
+  display: none !important;
+}
