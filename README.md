@@ -45,11 +45,20 @@ NanasCMS is a lightweight, self-hosted Content Management System built with mode
       cp .env.example .env
       ```
     - Edit `.env` and set your database credentials:
+
       ```ini
-      DB_HOST=localhost
-      DB_DATABASE=nanascms
-      DB_USERNAME=root
-      DB_PASSWORD=your_password
+        # development : sedang dalam perbaikan
+        # production: website live on
+
+        APP_NAME="NanasCMS"
+        APP_BASE_URL="http://localhost/nanascms/public"
+        APP_TIMEZONE="Asia/Makassar"
+        APP_ENV="development"
+
+        DB_HOST=[IP_ADDRESS]
+        DB_DATABASE=[DATABASE]
+        DB_USERNAME=[USERNAME]
+        DB_PASSWORD=[PASSWORD]
       ```
 
 4.  **Run Migrations & Seeders:**
