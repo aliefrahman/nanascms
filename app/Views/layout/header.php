@@ -21,8 +21,17 @@ if (!empty($globalMenus)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $tagline ?? 'Belum di isi Tagline di pengaturan sistem' ?> |
-        <?= $companyName ?? 'Belum di isi Nama Perusahaan di pengaturan sistem' ?>
+    <title>
+        <?php if (!empty($tagline)): ?>
+            <?= htmlspecialchars($tagline) ?>
+        <?php else: ?>
+            tagline belum di isi di pengaturan
+        <?php endif; ?> |
+        <?php if (!empty($companyName)): ?>
+            <?= htmlspecialchars($companyName) ?>
+        <?php else: ?>
+            NANAS.CMS
+        <?php endif; ?>
     </title>
 
     <!-- Google Fonts -->
@@ -77,7 +86,7 @@ if (!empty($globalMenus)) {
                     <?php if (!empty($brandName)): ?>
                         <?= htmlspecialchars($brandName) ?>
                     <?php else: ?>
-                        NANAS<span class="text-brand-primary">.DEV</span>
+                        NANAS<span class="text-brand-primary">.CMS</span>
                     <?php endif; ?>
                 </span>
             </a>
@@ -93,19 +102,26 @@ if (!empty($globalMenus)) {
                         <?php else: ?>
                             <!-- Dropdown Menu Item -->
                             <div class="relative group">
-                                <button class="text-sm font-medium text-slate-400 hover:text-white transition-colors font-sans flex items-center space-x-1 focus:outline-none py-2">
+                                <button
+                                    class="text-sm font-medium text-slate-400 hover:text-white transition-colors font-sans flex items-center space-x-1 focus:outline-none py-2">
                                     <span><?= htmlspecialchars($item['title']) ?></span>
-                                    <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500 group-hover:rotate-180 transition-transform duration-300"></i>
+                                    <i data-lucide="chevron-down"
+                                        class="w-3.5 h-3.5 text-slate-500 group-hover:rotate-180 transition-transform duration-300"></i>
                                 </button>
-                                <div class="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-4 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                                    <div class="rounded-2xl bg-dark-surface/90 border border-white/10 backdrop-blur-xl shadow-2xl shadow-black/50 p-2 relative overflow-hidden">
+                                <div
+                                    class="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-4 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                                    <div
+                                        class="rounded-2xl bg-dark-surface/90 border border-white/10 backdrop-blur-xl shadow-2xl shadow-black/50 p-2 relative overflow-hidden">
                                         <!-- Top highlight -->
-                                        <div class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-primary/50 to-transparent"></div>
-                                        
+                                        <div
+                                            class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-primary/50 to-transparent">
+                                        </div>
+
                                         <?php foreach ($item['children'] as $child): ?>
                                             <a href="<?= htmlspecialchars(str_starts_with($child['url'], '/') ? route($child['url']) : $child['url']) ?>"
                                                 class="flex items-center px-4 py-3 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                                <span class="transform group-hover/link:translate-x-1 transition-transform duration-300"><?= htmlspecialchars($child['title']) ?></span>
+                                                <span
+                                                    class="transform group-hover/link:translate-x-1 transition-transform duration-300"><?= htmlspecialchars($child['title']) ?></span>
                                             </a>
                                         <?php endforeach; ?>
                                     </div>
@@ -154,61 +170,75 @@ if (!empty($globalMenus)) {
                             <?php endif; ?>
                             <span
                                 class="hidden sm:inline text-xs font-semibold text-slate-300 font-sans max-w-[120px] truncate"><?= htmlspecialchars($headerName) ?></span>
-                            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-500 mr-2 group-hover:rotate-180 transition-transform duration-300"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-3.5 h-3.5 text-slate-500 mr-2 group-hover:rotate-180 transition-transform duration-300"></i>
                         </button>
 
                         <!-- Dropdown Menu -->
                         <div
                             class="absolute right-0 top-full pt-3 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-4 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                            <div class="rounded-2xl bg-dark-surface/90 border border-white/10 backdrop-blur-xl shadow-2xl shadow-black/50 p-2 relative overflow-hidden">
-                                <div class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-primary/50 to-transparent"></div>
-                                
+                            <div
+                                class="rounded-2xl bg-dark-surface/90 border border-white/10 backdrop-blur-xl shadow-2xl shadow-black/50 p-2 relative overflow-hidden">
+                                <div
+                                    class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-primary/50 to-transparent">
+                                </div>
+
                                 <div class="px-4 py-3 border-b border-white/5 mb-2">
-                                    <p class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-0.5">Masuk sebagai</p>
-                                    <p class="text-sm font-bold text-white truncate"><?= htmlspecialchars($headerName) ?></p>
+                                    <p class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-0.5">
+                                        Masuk sebagai</p>
+                                    <p class="text-sm font-bold text-white truncate"><?= htmlspecialchars($headerName) ?>
+                                    </p>
                                 </div>
 
                                 <a href="<?= route('/dashboard') ?>"
                                     class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                    <i data-lucide="layout-dashboard" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                    <i data-lucide="layout-dashboard"
+                                        class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                     <span>Dashboard</span>
                                 </a>
                                 <a href="<?= route('/profile') ?>"
                                     class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                    <i data-lucide="user" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                    <i data-lucide="user"
+                                        class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                     <span>Profil Saya</span>
                                 </a>
                                 <a href="<?= route('/media') ?>"
                                     class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                    <i data-lucide="image" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                    <i data-lucide="image"
+                                        class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                     <span>Galeri Media</span>
                                 </a>
                                 <?php if (\Core\Auth::role() === 'Admin' || \Core\Auth::role() === 'Editor'): ?>
                                     <a href="<?= route('/categories') ?>"
                                         class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                        <i data-lucide="tag" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                        <i data-lucide="tag"
+                                            class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                         <span>Manajemen Kategori</span>
                                     </a>
                                     <a href="<?= route('/pages') ?>"
                                         class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                        <i data-lucide="file-text" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                        <i data-lucide="file-text"
+                                            class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                         <span>Manajemen Halaman</span>
                                     </a>
                                 <?php endif; ?>
                                 <?php if (\Core\Auth::role() === 'Admin'): ?>
                                     <a href="<?= route('/users') ?>"
                                         class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                        <i data-lucide="users" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                        <i data-lucide="users"
+                                            class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                         <span>Manajemen User</span>
                                     </a>
                                     <a href="<?= route('/settings') ?>"
                                         class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                        <i data-lucide="settings-2" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                        <i data-lucide="settings-2"
+                                            class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                         <span>Pengaturan Sistem</span>
                                     </a>
                                     <a href="<?= route('/menus') ?>"
                                         class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-brand-primary hover:bg-white/5 transition-all group/link">
-                                        <i data-lucide="menu" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                        <i data-lucide="menu"
+                                            class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                         <span>Manajemen Menu</span>
                                     </a>
                                 <?php endif; ?>
@@ -217,7 +247,8 @@ if (!empty($globalMenus)) {
                                 </div>
                                 <a href="<?= route('/logout') ?>"
                                     class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-xs font-semibold text-red-400 hover:bg-red-500/10 transition-all group/link">
-                                    <i data-lucide="log-out" class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
+                                    <i data-lucide="log-out"
+                                        class="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300"></i>
                                     <span>Keluar</span>
                                 </a>
                             </div>
@@ -291,7 +322,8 @@ if (!empty($globalMenus)) {
                 <a href="<?= route('/categories') ?>"
                     class="mobile-nav-link text-2xl font-display font-bold hover:text-brand-primary transition-colors">Kategori</a>
                 <a href="<?= route('/pages') ?>"
-                    class="mobile-nav-link text-2xl font-display font-bold hover:text-brand-primary transition-colors">Halaman Statis</a>
+                    class="mobile-nav-link text-2xl font-display font-bold hover:text-brand-primary transition-colors">Halaman
+                    Statis</a>
             <?php endif; ?>
             <a href="<?= route('/profile') ?>"
                 class="mobile-nav-link text-2xl font-display font-bold hover:text-brand-primary transition-colors">Profil

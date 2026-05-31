@@ -21,7 +21,7 @@
                         <?php if (!empty($brandName)): ?>
                             <?= htmlspecialchars($brandName) ?>
                         <?php else: ?>
-                            isi nama merek atau julukan perusahaan anda pada pengaturan sistem
+                            NANAS<span class="text-brand-primary">.CMS</span>
                         <?php endif; ?>
                     </span>
                 </a>
@@ -66,17 +66,13 @@
                 <h4 class="font-display font-bold text-sm text-white uppercase tracking-wider mb-6">Lokasi Kami</h4>
                 <?php if (!empty($latitude) && !empty($longitude)): ?>
                     <div class="rounded-xl overflow-hidden border border-white/10 h-48 relative group">
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            frameborder="0" 
-                            scrolling="no" 
+                        <iframe width="100%" height="100%" frameborder="0" scrolling="no"
                             src="https://maps.google.com/maps?q=<?= htmlspecialchars($latitude) ?>,<?= htmlspecialchars($longitude) ?>&hl=id&z=15&output=embed"
-                            class="absolute inset-0 grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500"
-                        ></iframe>
+                            class="absolute inset-0 grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500"></iframe>
                     </div>
                 <?php else: ?>
-                    <div class="rounded-xl border border-white/10 bg-white/5 h-48 flex items-center justify-center p-4 text-center">
+                    <div
+                        class="rounded-xl border border-white/10 bg-white/5 h-48 flex items-center justify-center p-4 text-center">
                         <p class="text-xs text-slate-500">Koordinat peta belum diatur pada pengaturan sistem.</p>
                     </div>
                 <?php endif; ?>
